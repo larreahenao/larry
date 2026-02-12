@@ -1,0 +1,20 @@
+{
+    "name": "larrix",
+    "version": "0.1.0",
+    "description": "The vanilla JS framework for browser extensions",
+    "license": "MIT",
+    "type": "module",
+    "bin": {
+        "larrix": "bin/larrix"
+    },
+    "files": [
+        "bin",
+        "src"
+    ],
+    "main": "src/cli.js",
+    "keywords": [
+        "extension",
+        "framework",
+        "vanilla"
+    ]
+}
