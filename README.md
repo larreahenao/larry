@@ -1,3 +1,5 @@
+![Larrix](docs/assets/logo.png)
+
 # Larrix
 
 The vanilla JS framework for browser extensions.
