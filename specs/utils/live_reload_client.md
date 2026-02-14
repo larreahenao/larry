@@ -46,7 +46,7 @@ The following aspects are explicitly out of the scope of this SPEC:
 The files explicitly involved in any changes or code generation related to this SPEC are:
 
 *   `specs/utils/live_reload_client.md` (this file, for its updates).
-*   `src/utils/live-reload-client.js` (the source code file for the live reload client).
+*   `core/utils/live-reload-client.js` (the source code file for the live reload client).
 
 ## 6. Edge Cases
 

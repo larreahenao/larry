@@ -10,12 +10,12 @@ This document describes the specifications for the `help` command module within 
 
 ## 3. Scope of Included Functions
 
-The scope of this SPEC covers the `help(params)` function located in `src/commands/help.js`. Specifically, it includes:
+The scope of this SPEC covers the `help(params)` function located in `core/commands/help.js`. Specifically, it includes:
 
 *   **Argument Parsing:** Logic to correctly parse `params` to identify if a request for general help or specific command help has been made.
 *   **General Help Display:** When no command or an invalid command is specified (as per edge cases), it must display a concise overview of the Larrix CLI, including its general usage syntax and a list of all available top-level commands with their brief descriptions.
 *   **Specific Command Help Display:** When a valid specific command name is provided (e.g., `larrix help init`), it must display detailed information relevant to *that specific command*. This includes its purpose, syntax, available options, and examples of use.
-*   **Logger Utilization (Mandatory):** All console output from the `help` command **must** exclusively use the `logger` utility from `src/utils/logger.js`.
+*   **Logger Utilization (Mandatory):** All console output from the `help` command **must** exclusively use the `logger` utility from `core/utils/logger.js`.
     *   **Informational Messages (General Help, Command-Specific Help):** Should use `logger.step` for main points and descriptions, possibly `logger.newLine()` for formatting. Headings might use `logger.success` for emphasis, but sparingly.
     *   **Error/Warning Messages (e.g., Unknown Command):** Must use `logger.error` or `logger.warn` as appropriate.
     *   **Formatting:** The output should be well-structured and readable, using `logger.newLine()` and appropriate spacing to enhance clarity.
@@ -33,9 +33,9 @@ The following aspects are explicitly out of the scope of this SPEC:
 The files explicitly involved in any changes or code generation related to this SPEC are:
 
 *   `specs/commands/help.md` (this file, for its creation and subsequent updates).
-*   `src/commands/help.js` (the source code file implementing the help command).
-*   `src/cli.js` (the main CLI entry point, as it directly calls the `help` command).
-*   `src/utils/logger.js` (as a mandatory utility for all console output operations).
+*   `core/commands/help.js` (the source code file implementing the help command).
+*   `core/cli.js` (the main CLI entry point, as it directly calls the `help` command).
+*   `core/utils/logger.js` (as a mandatory utility for all console output operations).
 
 ## 6. Edge Cases
 

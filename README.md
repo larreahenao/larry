@@ -31,7 +31,7 @@ my-extension/
 ├── .gitignore
 ├── larrix.config.js
 ├── package.json
-└── src/
+└── core/
     ├── background/
     │   └── index.js          # Service Worker
     ├── content/

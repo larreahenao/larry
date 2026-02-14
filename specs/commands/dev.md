@@ -25,18 +25,18 @@ The `dev()` function is the main entry point for the development command. It orc
 
 ### `buildAndInject(distributionDirectory)`
 
-*   Runs the core build process by calling `buildExtension({ outputDirectory: "dist", createZip: false, quiet: true })` from `src/utils/extension-service.js`.
+*   Runs the core build process by calling `buildExtension({ outputDirectory: "dist", createZip: false, quiet: true })` from `core/utils/extension-service.js`.
 *   Calls `injectLiveReloadCode()` to inject the live-reload client into the background script.
 
 ### `injectLiveReloadCode(distributionDirectory)`
 
-*   Reads the content of the background service worker (`background/index.js`) and the live-reload client script (`src/utils/live-reload-client.js`).
+*   Reads the content of the background service worker (`background/index.js`) and the live-reload client script (`core/utils/live-reload-client.js`).
 *   Prepends the live-reload client code to the background script, ensuring it runs in the extension's context.
 
 ### `regenerateManifest(sourceDirectory, distributionDirectory)`
 
-*   Loads the project's configuration (using `loadConfiguration` from `src/utils/extension-service.js`).
-*   Generates a new `manifest.json` file based on the current configuration and source files (using `generateManifest` from `src/utils/extension-service.js`).
+*   Loads the project's configuration (using `loadConfiguration` from `core/utils/extension-service.js`).
+*   Generates a new `manifest.json` file based on the current configuration and source files (using `generateManifest` from `core/utils/extension-service.js`).
 *   Writes the updated manifest to the `distributionDirectory`.
 
 ### `startDevelopmentServer(context)`
@@ -63,7 +63,7 @@ The `dev()` function is the main entry point for the development command. It orc
 *   If the changed file is part of the background script, it calls `injectLiveReloadCode()` again.
 *   Finally, it sends a "reload" event to all connected SSE clients, triggering the extension to reload.
 
-### Client-Side Live Reload (`src/utils/live-reload-client.js`)
+### Client-Side Live Reload (`core/utils/live-reload-client.js`)
 
 *   A client-side script that is injected into the extension's background service worker during development builds.
 *   It establishes an SSE connection to `http://localhost:3000/events`.
@@ -84,10 +84,10 @@ The following aspects are explicitly out of the scope of this SPEC for the `dev`
 The files explicitly involved in any changes or code generation related to this SPEC are:
 
 *   `specs/commands/dev.md` (this file, for its updates).
-*   `src/commands/dev.js` (the source code file for the dev command).
-*   `src/utils/extension-service.js` (provides project validation, configuration loading, manifest generation, and core build logic).
-*   `src/utils/live-reload-client.js` (the script injected for client-side live reload).
-*   `src/utils/logger.js` (used for all console output).
+*   `core/commands/dev.js` (the source code file for the dev command).
+*   `core/utils/extension-service.js` (provides project validation, configuration loading, manifest generation, and core build logic).
+*   `core/utils/live-reload-client.js` (the script injected for client-side live reload).
+*   `core/utils/logger.js` (used for all console output).
 *   `larrix.config.js` (project configuration loaded by `buildExtension`).
 
 ## 6. Edge Cases

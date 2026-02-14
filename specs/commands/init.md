@@ -25,8 +25,8 @@ The `init` command module primarily consists of an asynchronous function `init(a
     *   Defines a set of standard directories required for a Chrome extension (e.g., `src/background`, `src/content`, `src/popup`, `src/icons`).
     *   Asynchronously creates these directories, ensuring parent directories are also created if they don't exist (`recursive: true`).
 *   **File Generation from Templates:**
-    *   Defines a list of core project files (e.g., `.gitignore`, `package.json`, `larrix.config.js`, and various `src` files).
-    *   Uses template functions/strings from `src/templates/init.js` to generate content for these files.
+    *   Defines a list of core project files (e.g., `.gitignore`, `package.json`, `larrix.config.js`, and various `core` files).
+    *   Uses template functions/strings from `core/templates/init.js` to generate content for these files.
     *   Asynchronously writes the generated content to the respective files within the new project structure.
 *   **Logging and Feedback:**
     *   Utilizes `logger.step` to indicate major phases (e.g., "Initializing Larrix framework", "Creating project <projectName>").
@@ -48,9 +48,9 @@ The following aspects are explicitly out of the scope of this SPEC:
 The files explicitly involved in any changes or code generation related to this SPEC are:
 
 *   `specs/commands/init.md` (this file, for its updates).
-*   `src/commands/init.js` (the source code file for the init command).
-*   `src/templates/init.js` (provides template content for generated files).
-*   `src/utils/logger.js` (used for all console output and user prompting).
+*   `core/commands/init.js` (the source code file for the init command).
+*   `core/templates/init.js` (provides template content for generated files).
+*   `core/utils/logger.js` (used for all console output and user prompting).
 
 ## 6. Edge Cases
 
@@ -59,5 +59,5 @@ The following edge cases must be considered:
 *   **No Project Name Argument and User Provides Empty Input:** If the user does not provide a project name argument and then provides an empty string when prompted by `logger.prompt`, the `projectName` will default to "larrix-extension".
 *   **Permissions Errors:** If the command does not have the necessary write permissions to the current working directory (`process.cwd()`) or the specified target project directory, file system operations (`mkdir`, `writeFile`) will fail, resulting in an error.
 *   **Disk Full:** If the disk where the project is being created runs out of space, file system operations will fail.
-*   **Template Content Issues:** If the template functions or strings in `src/templates/init.js` are invalid or malformed, the generated files will be incorrect or cause errors during project creation.
+*   **Template Content Issues:** If the template functions or strings in `core/templates/init.js` are invalid or malformed, the generated files will be incorrect or cause errors during project creation.
 *   **`logger.prompt` Cancellation/Error:** If `logger.prompt` rejects its promise (e.g., due to user interruption or if `isQuiet` mode is enabled without a `defaultValue`, though the current `logger.prompt` requires a `defaultValue`), the `init` command would not receive a project name and might fail or use a default if available. (Note: The updated `logger.prompt` explicitly requires `defaultValue`, mitigating the "no `defaultValue` in quiet mode" scenario, but user cancellation might still lead to an empty string if not handled by `logger.prompt`).

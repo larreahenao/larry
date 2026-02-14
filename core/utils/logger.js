@@ -28,13 +28,6 @@ class Logger {
     isQuiet = false;
 
     /**
-     * Creates an instance of Logger.
-     */
-    constructor() {
-        // No initialization needed as isQuiet is set directly
-    }
-
-    /**
      * Sets the quiet mode for the logger.
      * When quiet mode is enabled, no messages will be logged to the console.
      * @param {boolean} value - True to enable quiet mode, false to disable.

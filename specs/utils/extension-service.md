@@ -2,7 +2,7 @@
 
 ## 1. Module Description
 
-This document describes the specifications for the `extension-service` module (`src/utils/extension-service.js`) in the Larrix project. This module provides higher-level services and orchestrates operations related to the Larrix browser extension, including project validation, configuration loading, manifest generation, and the core build process. It acts as a central hub for logic that understands the structure and requirements of a Larrix extension.
+This document describes the specifications for the `extension-service` module (`core/utils/extension-service.js`) in the Larrix project. This module provides higher-level services and orchestrates operations related to the Larrix browser extension, including project validation, configuration loading, manifest generation, and the core build process. It acts as a central hub for logic that understands the structure and requirements of a Larrix extension.
 
 ## 2. Reference to Code Generation Rules
 
@@ -66,10 +66,10 @@ The following aspects are explicitly out of the scope of this SPEC for the `exte
 The files explicitly involved in any changes or code generation related to this SPEC are:
 
 *   `specs/utils/extension-service.md` (this file, for its updates).
-*   `src/utils/extension-service.js` (the source code file for the extension services).
-*   `src/utils/filesystem.js` (provides low-level file system operations).
-*   `src/utils/logger.js` (used for console output).
-*   `src/utils/zip.js` (used for creating ZIP archives).
+*   `core/utils/extension-service.js` (the source code file for the extension services).
+*   `core/utils/filesystem.js` (provides low-level file system operations).
+*   `core/utils/logger.js` (used for console output).
+*   `core/utils/zip.js` (used for creating ZIP archives).
 *   `larrix.config.js` (the configuration file it interacts with).
 
 ## 6. Edge Cases

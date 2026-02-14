@@ -9,9 +9,9 @@
     },
     "files": [
         "bin",
-        "src"
+        "core"
     ],
-    "main": "src/cli.js",
+    "main": "core/cli.js",
     "keywords": [
         "extension",
         "framework",

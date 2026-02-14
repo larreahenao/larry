@@ -10,7 +10,7 @@ This document describes the specifications for the `logger` utility module in th
 
 ## 3. Scope of Included Functions and Classes
 
-The scope of this SPEC covers the `Logger` class and its methods, as well as the exported `logger` instance, all located in `src/utils/logger.js`.
+The scope of this SPEC covers the `Logger` class and its methods, as well as the exported `logger` instance, all located in `core/utils/logger.js`.
 
 ### `Logger` Class
 
@@ -70,7 +70,7 @@ The following aspects are explicitly out of the scope of this SPEC:
 The files explicitly involved in any changes or code generation related to this SPEC are:
 
 *   `specs/utils/logger.md` (this file, for its updates).
-*   `src/utils/logger.js` (the source code file for the logger utility).
+*   `core/utils/logger.js` (the source code file for the logger utility).
 *   Any other module that imports and uses the `logger` instance.
 
 ## 6. Edge Cases

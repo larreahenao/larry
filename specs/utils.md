@@ -1,8 +1,8 @@
 # Utilities Specification
 
-The `src/utils` directory contains modules with helper functions used across the CLI.
+The `core/utils` directory contains modules with helper functions used across the CLI.
 
-## Core Build (`src/utils/core-build.js`)
+## Core Build (`core/utils/core-build.js`)
 
 Provides the core build logic for the Larrix project.
 
@@ -19,7 +19,7 @@ Provides the core build logic for the Larrix project.
 
 -   `formatSize(bytes)`: Formats a size in bytes into a human-readable string (e.g., "1.50 kB").
 
-## Filesystem (`src/utils/filesystem.js`)
+## Filesystem (`core/utils/filesystem.js`)
 
 Provides functions for interacting with the file system.
 
@@ -27,11 +27,11 @@ Provides functions for interacting with the file system.
 -   `copyDirectory(source, destination)`: Recursively copies a directory.
 -   `getFilesRecursive(directory, base)`: Returns a flat list of all files in a directory, including their path and size.
 
-## Live Reload Client (`src/utils/live-reload-client.js`)
+## Live Reload Client (`core/utils/live-reload-client.js`)
 
 Provides the client-side script for live reloading. It is an Immediately Invoked Function Expression (IIFE) that establishes a Server-Sent Events (SSE) connection to the development server. When a "reload" event is received, it reloads the extension. On connection error, it attempts to reconnect after a short delay. This script is injected into the extension's background service worker during development.
 
-## Logger (`src/utils/logger.js`)
+## Logger (`core/utils/logger.js`)
 
 A custom logger for formatted console output. It provides methods for different log levels and styles.
 
@@ -43,7 +43,7 @@ A custom logger for formatted console output. It provides methods for different 
 -   `newLine()`: Prints an empty line for spacing.
 -   `setQuiet(value)`: Sets the quiet mode. If `true`, all logging methods are disabled.
 
-## ZIP (`src/utils/zip.js`)
+## ZIP (`core/utils/zip.js`)
 
 Handles the creation of ZIP archives from a directory.
 

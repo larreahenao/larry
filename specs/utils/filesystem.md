@@ -2,7 +2,7 @@
 
 ## 1. Module Description
 
-This document describes the specifications for the `filesystem` utility module (`src/utils/filesystem.js`) in the Larrix project. This module provides a collection of asynchronous and synchronous utility functions for common, low-level file system operations, promoting reusability and abstracting away direct Node.js `fs` module interactions. It focuses purely on file and directory manipulation and inspection, without knowledge of specific project structures or domain-specific content.
+This document describes the specifications for the `filesystem` utility module (`core/utils/filesystem.js`) in the Larrix project. This module provides a collection of asynchronous and synchronous utility functions for common, low-level file system operations, promoting reusability and abstracting away direct Node.js `fs` module interactions. It focuses purely on file and directory manipulation and inspection, without knowledge of specific project structures or domain-specific content.
 
 ## 2. Reference to Code Generation Rules
 
@@ -61,8 +61,8 @@ The following aspects are explicitly out of the scope of this SPEC for the `file
 The files explicitly involved in any changes or code generation related to this SPEC are:
 
 *   `specs/utils/filesystem.md` (this file, for its updates).
-*   `src/utils/filesystem.js` (the source code file for the filesystem utilities).
-*   `src/utils/extension-service.js` (from where `fileExists` will be migrated).
+*   `core/utils/filesystem.js` (the source code file for the filesystem utilities).
+*   `core/utils/extension-service.js` (from where `fileExists` will be migrated).
 
 ## 6. Edge Cases
 

@@ -173,14 +173,12 @@ function watchSourceFiles(sourceDirectory, context) {
 
             try {
                 await access(sourcePath);
-                // File exists, so it was added or changed
                 logger.info(`File changed: ${filename}`);
                 await mkdir(dirname(destPath), { recursive: true });
                 await copyFile(sourcePath, destPath);
                 logger.info(`Copied ${filename} to ${OUTPUT_DIRECTORY}.`);
             } catch (error) {
                 if (error.code === 'ENOENT') {
-                    // File does not exist in src, so it was deleted
                     logger.info(`File deleted: ${filename}`);
                     try {
                         await rm(destPath, { recursive: true, force: true });
@@ -195,10 +193,8 @@ function watchSourceFiles(sourceDirectory, context) {
                 }
             }
 
-            // Regenerate manifest after every change
             await regenerateManifest(sourceDirectory, context.distributionDirectory);
 
-            // If the changed file was the background script, we need to re-inject the live reload client
             if (filename.includes("background")) {
                 await injectLiveReloadCode(context.distributionDirectory);
             }
