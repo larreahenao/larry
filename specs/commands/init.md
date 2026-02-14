@@ -48,7 +48,7 @@ The following aspects are explicitly out of the scope of this SPEC:
 The files explicitly involved in any changes or code generation related to this SPEC are:
 
 *   `specs/commands/init.md` (this file, for its updates).
-*   `core/commands/init.js` (the source code file for the init command).
+*   `core/cli/commands/init.js` (the source code file for the init command).
 *   `core/templates/init.js` (provides template content for generated files).
 *   `core/utils/logger.js` (used for all console output and user prompting).
 

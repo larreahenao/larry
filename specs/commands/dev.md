@@ -84,7 +84,7 @@ The following aspects are explicitly out of the scope of this SPEC for the `dev`
 The files explicitly involved in any changes or code generation related to this SPEC are:
 
 *   `specs/commands/dev.md` (this file, for its updates).
-*   `core/commands/dev.js` (the source code file for the dev command).
+*   `core/cli/commands/dev.js` (the source code file for the dev command).
 *   `core/utils/extension-service.js` (provides project validation, configuration loading, manifest generation, and core build logic).
 *   `core/utils/live-reload-client.js` (the script injected for client-side live reload).
 *   `core/utils/logger.js` (used for all console output).

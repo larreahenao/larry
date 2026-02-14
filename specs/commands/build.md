@@ -35,7 +35,7 @@ The following aspects are explicitly out of the scope of this SPEC for the `buil
 The files explicitly involved in any changes or code generation related to this SPEC are:
 
 *   `specs/commands/build.md` (this file, for its updates).
-*   `core/commands/build.js` (the source code file for the build command).
+*   `core/cli/commands/build.js` (the source code file for the build command).
 *   `core/utils/extension-service.js` (provides project validation, configuration loading, manifest generation, and core build logic).
 
 ## 6. Edge Cases

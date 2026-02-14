@@ -10,7 +10,7 @@ This document describes the specifications for the main module of the Larrix Com
 
 ## 3. Scope of Included Functions
 
-The scope of this SPEC covers the main `run(args)` function located in `core/cli.js`. Specifically, it includes:
+The scope of this SPEC covers the main `run(args)` function located in `core/cli/index.js`. Specifically, it includes:
 
 *   The logic for reading and distinguishing the main command (`args[0]`).
 *   The extraction of parameters for the command (`args.slice(1)`).
@@ -33,7 +33,7 @@ The following aspects are explicitly out of the scope of this SPEC:
 The files explicitly involved in any changes or code generation related to this SPEC are:
 
 *   `specs/cli.md` (this file, for updates).
-*   `core/cli.js` (the main CLI source code file).
+*   `core/cli/index.js` (the main CLI source code file).
 *   `specs/code_generation_rules.md` (as a mandatory reference).
 
 ## 6. Edge Cases

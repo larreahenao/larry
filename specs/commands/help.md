@@ -10,7 +10,7 @@ This document describes the specifications for the `help` command module within 
 
 ## 3. Scope of Included Functions
 
-The scope of this SPEC covers the `help(params)` function located in `core/commands/help.js`. Specifically, it includes:
+The scope of this SPEC covers the `help(params)` function located in `core/cli/commands/help.js`. Specifically, it includes:
 
 *   **Argument Parsing:** Logic to correctly parse `params` to identify if a request for general help or specific command help has been made.
 *   **General Help Display:** When no command or an invalid command is specified (as per edge cases), it must display a concise overview of the Larrix CLI, including its general usage syntax and a list of all available top-level commands with their brief descriptions.
@@ -33,8 +33,8 @@ The following aspects are explicitly out of the scope of this SPEC:
 The files explicitly involved in any changes or code generation related to this SPEC are:
 
 *   `specs/commands/help.md` (this file, for its creation and subsequent updates).
-*   `core/commands/help.js` (the source code file implementing the help command).
-*   `core/cli.js` (the main CLI entry point, as it directly calls the `help` command).
+*   `core/cli/commands/help.js` (the source code file implementing the help command).
+*   `core/cli/index.js` (the main CLI entry point, as it directly calls the `help` command).
 *   `core/utils/logger.js` (as a mandatory utility for all console output operations).
 
 ## 6. Edge Cases

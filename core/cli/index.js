@@ -1,7 +1,7 @@
-import { init } from "./commands/init.js";
-import { build } from "./commands/build.js";
-import { dev } from "./commands/dev.js";
-import { help } from "./commands/help.js";
+import { init } from "../commands/init.js";
+import { build } from "../commands/build.js";
+import { dev } from "../commands/dev.js";
+import { help } from "../commands/help.js";
 
 /**
  * Executes the appropriate command based on the provided arguments.
