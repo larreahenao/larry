@@ -38,16 +38,21 @@ All logging methods must respect the `isQuiet` flag, meaning they will not outpu
 *   **`file(path: string, size: string)`:** Logs a file path and its size, typically with the path in cyan and size dimmed.
     *   **Output Format:** `  <cyan paddedPath> <dimmed size>`
 *   **`newLine()`:** Prints an empty line to the console for spacing.
+*   **`formatSize(bytes: number): string`:**
+    *   **Purpose:** Formats a given size in bytes into a human-readable string (e.g., "1024 B", "1.50 kB").
+    *   **Parameters:**
+        *   `bytes` (number): The size in bytes.
+    *   **Returns:** `string` - The formatted size string.
 
 ### User Interaction Methods
 
 These methods enable direct interaction with the user through the console. They must respect the `isQuiet` flag; if `isQuiet` is `true`, they should return a default/predefined value or throw an error to prevent blocking.
 
-*   **`prompt(question: string, defaultValue?: string): Promise<string>`:** Asks the user a question and waits for their textual input.
+*   **`prompt(question: string, defaultValue: string): Promise<string>`:** Asks the user a question and waits for their textual input.
     *   **Asynchronous Nature:** This method must be asynchronous, returning a `Promise` that resolves with the user's input.
-    *   **Behavior in `isQuiet` mode:** If `isQuiet` is `true` and `defaultValue` is provided, the method immediately resolves the `Promise` with `defaultValue`. If `isQuiet` is `true` and no `defaultValue` is provided, it immediately rejects the `Promise` with an error to prevent an unhandled blocked state in non-interactive environments.
+    *   **Behavior in `isQuiet` mode:** If `isQuiet` is `true`, the method immediately resolves the `Promise` with `defaultValue`.
     *   **Implementation:** Must use Node.js's native `readline` module.
-    *   **Output Format:** Presents the `question` clearly. If `defaultValue` is present, it should be indicated to the user as part of the prompt.
+    *   **Output Format:** Presents the `question` clearly and indicates the `defaultValue` to the user as part of the prompt.
 
 ## 4. Out of Scope
 
