@@ -3,6 +3,12 @@ import { join, relative } from "node:path";
 import { deflateRawSync } from "node:zlib";
 import { writeFile } from "node:fs/promises";
 
+/**
+ * Creates a ZIP archive from the files in a source directory.
+ * @param {string} sourceDirectory - The path to the directory to be zipped.
+ * @param {string} outputPath - The path where the output ZIP file will be saved.
+ * @returns {Promise<number>} The total size of the generated ZIP file in bytes.
+ */
 export async function createZip(sourceDirectory, outputPath) {
     const files = await collectFiles(sourceDirectory);
 
@@ -37,6 +43,12 @@ export async function createZip(sourceDirectory, outputPath) {
     return zipBuffer.length;
 }
 
+/**
+ * Recursively collects all file paths within a given directory.
+ * @param {string} directory - The directory to scan.
+ * @param {string} [base=directory] - The base path to make file paths relative to.
+ * @returns {Promise<string[]>} A list of relative file paths.
+ */
 async function collectFiles(directory, base = directory) {
     const results = [];
     const entries = await readdir(directory, { withFileTypes: true });
@@ -54,6 +66,14 @@ async function collectFiles(directory, base = directory) {
     return results;
 }
 
+/**
+ * Builds the local file header for a file in the ZIP archive.
+ * @param {Buffer} nameBuffer - The file name as a Buffer.
+ * @param {Buffer} compressed - The compressed file content.
+ * @param {Buffer} original - The original file content.
+ * @param {number} crc - The CRC-32 checksum of the original content.
+ * @returns {Buffer} The complete local file header and compressed content.
+ */
 function buildLocalHeader(nameBuffer, compressed, original, crc) {
     const header = Buffer.alloc(30);
     header.writeUInt32LE(0x04034b50, 0);       // local file header signature
@@ -71,6 +91,15 @@ function buildLocalHeader(nameBuffer, compressed, original, crc) {
     return Buffer.concat([header, nameBuffer, compressed]);
 }
 
+/**
+ * Builds the central directory header for a file in the ZIP archive.
+ * @param {Buffer} nameBuffer - The file name as a Buffer.
+ * @param {Buffer} compressed - The compressed file content.
+ * @param {Buffer} original - The original file content.
+ * @param {number} crc - The CRC-32 checksum of the original content.
+ * @param {number} localHeaderOffset - The offset of the local file header.
+ * @returns {Buffer} The complete central directory header.
+ */
 function buildCentralHeader(nameBuffer, compressed, original, crc, localHeaderOffset) {
     const header = Buffer.alloc(46);
     header.writeUInt32LE(0x02014b50, 0);       // central directory header signature
@@ -94,6 +123,13 @@ function buildCentralHeader(nameBuffer, compressed, original, crc, localHeaderOf
     return Buffer.concat([header, nameBuffer]);
 }
 
+/**
+ * Builds the "End of Central Directory" record for the ZIP archive.
+ * @param {number} entryCount - The total number of files in the archive.
+ * @param {number} centralDirSize - The total size of the central directory.
+ * @param {number} centralDirOffset - The offset where the central directory starts.
+ * @returns {Buffer} The "End of Central Directory" record.
+ */
 function buildEndRecord(entryCount, centralDirSize, centralDirOffset) {
     const record = Buffer.alloc(22);
     record.writeUInt32LE(0x06054b50, 0);        // end of central directory signature
@@ -108,6 +144,11 @@ function buildEndRecord(entryCount, centralDirSize, centralDirOffset) {
     return record;
 }
 
+/**
+ * Calculates the CRC-32 checksum for a buffer.
+ * @param {Buffer} buffer - The input buffer.
+ * @returns {number} The calculated CRC-32 checksum.
+ */
 function crc32(buffer) {
     let crc = 0xFFFFFFFF;
 

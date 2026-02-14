@@ -1,7 +1,12 @@
 import { init } from "./commands/init.js";
 import { build } from "./commands/build.js";
 import { dev } from "./commands/dev.js";
+import { help } from "./commands/help.js";
 
+/**
+ * Executes the appropriate command based on the provided arguments.
+ * @param {string[]} args - The command-line arguments.
+ */
 export async function run(args) {
     const command = args[0];
     const params = args.slice(1);
@@ -16,8 +21,11 @@ export async function run(args) {
         case 'dev':
             await dev(params);
             break;
+        case 'help':
+            await help(params);
+            break;
         default:
-            console.log("Unknown command");
+            await help(params);
             break;
     }
 }

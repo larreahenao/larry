@@ -3,17 +3,22 @@ import { join } from "node:path";
 import { logger } from "../utils/logger.js";
 import * as templates from "../templates/init.js";
 
+/**
+ * Initializes a new Larrix project by creating the necessary directory structure
+ * and configuration files. It prompts for a project name if one is not provided.
+ * @param {string[]} args - The command-line arguments, with the first argument
+ *                           being the optional project name.
+ */
 export async function init(args) {
-    const projectName = args[0];
+    let projectName = args[0];
 
     logger.newLine();
     logger.step("init", "Initializing Larrix framework");
 
     if (!projectName) {
-        logger.error("Project name is required, please use 'larrix init <name>'");
         logger.newLine();
-
-        return;
+        projectName = await logger.prompt("What is the name of your project?", "larrix-extension");
+        logger.newLine();
     }
 
     const root = join(process.cwd(), projectName);

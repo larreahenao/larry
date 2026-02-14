@@ -1,3 +1,8 @@
+/**
+ * Generates the content for the package.json file.
+ * @param {string} projectName - The name of the project.
+ * @returns {string} The formatted package.json content.
+ */
 export function packageJson(projectName) {
     return JSON.stringify({
         name: projectName,
@@ -11,6 +16,11 @@ export function packageJson(projectName) {
     }, null, 4);
 }
 
+/**
+ * Generates the content for the larrix.config.js file.
+ * @param {string} projectName - The name of the project.
+ * @returns {string} The larrix.config.js content.
+ */
 export function larrixConfig(projectName) {
     return `export default {
     name: "${projectName}",
